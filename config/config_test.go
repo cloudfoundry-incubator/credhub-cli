@@ -3,6 +3,7 @@
 package config_test
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -104,7 +105,7 @@ var _ = Describe("Config", func() {
 
 			configFile, err := ioutil.ReadFile(path.Join(os.Getenv("HOME"), ".credhub", "config.json"))
 			Expect(err).NotTo(HaveOccurred())
-			Expect(string(configFile)).NotTo(ContainSubstring(string(60 * time.Second)))
+			Expect(string(configFile)).NotTo(ContainSubstring(fmt.Sprint(60 * time.Second)))
 		})
 	})
 
